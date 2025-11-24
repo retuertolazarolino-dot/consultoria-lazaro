@@ -26,7 +26,7 @@ const servicios = [
     descripcion:
       "Levantamientos precisos, parcelaciones, planos y mediciones especializadas.",
     imagen: "/home/servicio3.png",
-    url: "/servicios/topografia",
+    url: "/servicios/levantamientos-topograficos",
   },
   {
     tipo: "imagen",
