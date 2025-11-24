@@ -1,0 +1,107 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Wrench, Award, UserCheck, ShieldCheck } from "lucide-react";
+
+const valores = [
+  {
+    icono: Wrench,
+    titulo: "Precisión Técnica",
+    descripcion:
+      "Uso de equipos y metodologías profesionales para garantizar resultados exactos en cada proyecto.",
+  },
+  {
+    icono: Award,
+    titulo: "Experiencia Comprobada",
+    descripcion:
+      "Más de una década desarrollando servicios en ingeniería civil, topografía y saneamiento legal.",
+  },
+  {
+    icono: UserCheck,
+    titulo: "Atención Personalizada",
+    descripcion:
+      "Cada proyecto se atiende con total dedicación y acompañamiento directo.",
+  },
+  {
+    icono: ShieldCheck,
+    titulo: "Resultados Confiables",
+    descripcion:
+      "Procesos claros, entregables completos y soluciones que cumplen estándares técnicos y legales.",
+  },
+];
+
+export default function PorQueElegirnos() {
+  return (
+    <section className="w-full py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        {/* ---------------- COLUMNA IZQUIERDA ---------------- */}
+        <div className="w-full md:w-3/5 flex flex-col">
+          <div className="flex flex-col gap-3 mb-8">
+            <div className="inline-block bg-[#5a8cc4]/20 text-[#081c32] font-semibold px-4 py-2 rounded-md w-max">
+              ¿Por qué elegirnos?
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#081c32] leading-snug">
+              Confianza y compromiso en cada proyecto.
+            </h2>
+
+            <p className="text-gray-600 max-w-xl">
+              En Consultoría Lázaro nos enfocamos en brindar soluciones integrales 
+              que combinan experiencia técnica, innovación y un compromiso total con nuestros clientes.
+            </p>
+          </div>
+
+          {/* GRID DE 4 VALORES */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+            {valores.map((item, index) => {
+              const Icono = item.icono;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gray-50 border border-gray-200 rounded-xl p-5 flex flex-col gap-3 hover:border-[#5a8cc4] transition-all"
+                >
+                  <Icono className="w-8 h-8 text-[#5a8cc4]" />
+                  <h3 className="text-lg font-semibold text-[#081c32]">
+                    {item.titulo}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{item.descripcion}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ---------------- COLUMNA DERECHA ---------------- */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full md:w-2/5"
+        >
+          {/* Imagen principal */}
+          <img
+            src="/home/images.jpg"
+            alt="Consultoría Lázaro - Equipo técnico"
+            className="w-full h-full object-cover rounded-[25px] shadow-lg"
+          />
+
+          {/* Botón flotante sobre la imagen */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+            <Link
+              href="/quienes-somos"
+              className="px-6 py-3 bg-[#5a8cc4] hover:bg-[#73a8e5] text-white font-semibold rounded-full shadow-lg transition-all"
+            >
+              Conócenos más
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
