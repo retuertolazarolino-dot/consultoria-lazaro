@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
@@ -40,46 +40,96 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="w-full py-24 bg-[#e8f0fa]">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        
-        {/* ---------- COLUMNA IZQUIERDA (FAQ) ---------- */}
-        <div>
-          {/* ---------- TÍTULO ---------- */}
-          <div className="text-left mb-10">
-            <span className="bg-[#5a8cc4]/20 text-[#081c32] font-semibold px-4 py-2 rounded-md">
-              Preguntas Frecuentes
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#081c32] mt-4 mb-3">
-              Resolvemos tus dudas más comunes
-            </h2>
-            <p className="text-gray-600 max-w-2xl">
-              Conoce más sobre nuestros procesos, cobertura y metodología de trabajo.
-            </p>
+    <section className="w-full py-24 bg-[#F4F6F8]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        {/* COLUMNA IZQUIERDA — Texto + imagen */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="lg:sticky lg:top-28"
+        >
+          <span className="section-badge mb-4 inline-flex">Preguntas Frecuentes</span>
+
+          <h2
+            className="text-3xl md:text-4xl font-bold text-[#0B1E35] mt-4 mb-5"
+            
+          >
+            Resolvemos tus<br />dudas más comunes
+          </h2>
+
+          <p className="text-[#6B7280] leading-relaxed mb-8 text-sm">
+            Conoce más sobre nuestros procesos, cobertura y metodología de trabajo.
+          </p>
+
+          {/* Imagen */}
+          <div className="relative overflow-hidden group">
+            <img
+              src="/home/servicio3.png"
+              alt="Consultoría Lázaro - Atención al cliente"
+              className="
+                w-full h-72 object-cover
+                filter grayscale group-hover:grayscale-0
+                transition-all duration-700 ease-in-out
+              "
+            />
+            {/* Borde dorado inferior */}
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#C5A028]" />
           </div>
 
-          {/* ---------- LISTA DE PREGUNTAS ---------- */}
-          <div className="space-y-4">
+          {/* Dato destacado */}
+          <div className="mt-6 p-5 border-l-4 border-[#C5A028] bg-white">
+            <p className="text-[#0B1E35] font-semibold text-sm">
+              "Más de 10 años brindando soluciones técnicas y legales con precisión y compromiso."
+            </p>
+            <p className="text-[#C5A028] text-xs font-semibold mt-2 tracking-wide uppercase">
+              — Consultoría Lázaro
+            </p>
+          </div>
+        </motion.div>
+
+        {/* COLUMNA DERECHA — FAQs */}
+        <div>
+          <div className="divide-y divide-[#D1D9E0] border-t border-b border-[#D1D9E0]">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center px-6 py-4 text-left text-[#081c32] font-semibold text-lg hover:bg-[#5a8cc4]/5 transition-all cursor-pointer"
+                  className="
+                    w-full flex justify-between items-start
+                    px-0 py-5 text-left
+                    hover:bg-transparent
+                    cursor-pointer group
+                  "
                 >
-                  {faq.pregunta}
-                  <motion.span
-                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="w-6 h-6 text-[#5a8cc4]" />
-                  </motion.span>
+                  <div className="flex items-start gap-4 pr-4">
+                    <span className="text-[#C5A028] text-xs font-bold mt-1 flex-shrink-0 tracking-wider">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[#0B1E35] font-semibold text-base group-hover:text-[#1A3A5C] transition-colors">
+                      {faq.pregunta}
+                    </span>
+                  </div>
+
+                  <div className="
+                    flex-shrink-0 w-7 h-7 flex items-center justify-center
+                    border border-[#D1D9E0] group-hover:border-[#C5A028]
+                    text-[#6B7280] group-hover:text-[#C5A028]
+                    transition-all duration-200
+                  ">
+                    {activeIndex === index
+                      ? <Minus size={14} />
+                      : <Plus size={14} />
+                    }
+                  </div>
                 </button>
 
                 <AnimatePresence>
@@ -88,10 +138,12 @@ export default function FaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="px-6 pb-5 text-gray-600 text-sm md:text-base bg-white"
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      {faq.respuesta}
+                      <div className="pl-10 pb-5 pr-8 text-[#6B7280] text-sm leading-relaxed border-l-2 border-[#C5A028] ml-0">
+                        {faq.respuesta}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -100,31 +152,6 @@ export default function FaqSection() {
           </div>
         </div>
 
-        {/* ---------- COLUMNA DERECHA (IMAGEN CON EFECTO GRIS A COLOR) ---------- */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative flex justify-center items-center group"
-        >
-          <img
-            src="/home/servicio3.png"
-            alt="Consultoría Lázaro - Atención al cliente"
-            className="
-              w-full h-[500px] object-cover rounded-[25px] shadow-xl
-              filter grayscale group-hover:grayscale-0 
-              transition-all duration-700 ease-in-out
-            "
-          />
-
-          {/* Overlay degradado tenue */}
-          <div className="
-            absolute inset-0 bg-linear-to-t from-[#081c32]/40 to-transparent 
-            rounded-[25px] opacity-0 group-hover:opacity-100 
-            transition-opacity duration-500
-          " />
-        </motion.div>
       </div>
     </section>
   );

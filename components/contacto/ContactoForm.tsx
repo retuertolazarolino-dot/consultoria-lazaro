@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, Clock, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, ArrowRight } from "lucide-react";
 
 export default function Contacto() {
   return (
-    <section className="w-full py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <section className="w-full py-24 bg-[#F4F6F8]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
         
         {/* -------------------------------------------------- */}
         {/* FORMULARIO (IZQUIERDA) */}
@@ -16,46 +16,55 @@ export default function Contacto() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200"
+          className="bg-white p-10 border border-[#D1D9E0] shadow-sm relative"
         >
-          <h2 className="text-3xl font-extrabold text-[#081c32] mb-6">
-            Envíanos un mensaje
+          {/* Acento superior */}
+          <div className="absolute top-0 left-0 w-full h-[3px] bg-[#C5A028]" />
+
+          <h2
+            className="text-3xl font-bold text-[#0B1E35] mb-8"
+            
+          >
+            Envíenos un mensaje
           </h2>
 
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-xs font-bold tracking-wide text-[#0B1E35] uppercase mb-2">Nombre completo</label>
+                <input
+                  type="text"
+                  className="w-full border border-[#D1D9E0] px-4 py-3 text-sm focus:border-[#C5A028] focus:ring-1 focus:ring-[#C5A028] outline-none transition-colors bg-transparent"
+                  placeholder="Ej. Juan Pérez"
+                />
+              </div>
 
-            <div>
-              <label className="text-sm font-semibold text-[#081c32]">Nombre completo</label>
-              <input
-                type="text"
-                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#5a8cc4] focus:ring-[#5a8cc4]"
-                placeholder="Tu nombre"
-              />
+              <div>
+                <label className="block text-xs font-bold tracking-wide text-[#0B1E35] uppercase mb-2">Teléfono</label>
+                <input
+                  type="tel"
+                  className="w-full border border-[#D1D9E0] px-4 py-3 text-sm focus:border-[#C5A028] focus:ring-1 focus:ring-[#C5A028] outline-none transition-colors bg-transparent"
+                  placeholder="+51 999 999 999"
+                />
+              </div>
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-[#081c32]">Correo electrónico</label>
+              <label className="block text-xs font-bold tracking-wide text-[#0B1E35] uppercase mb-2">Correo electrónico</label>
               <input
                 type="email"
-                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#5a8cc4] focus:ring-[#5a8cc4]"
-                placeholder="correo@ejemplo.com"
+                className="w-full border border-[#D1D9E0] px-4 py-3 text-sm focus:border-[#C5A028] focus:ring-1 focus:ring-[#C5A028] outline-none transition-colors bg-transparent"
+                placeholder="correo@empresa.com"
               />
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-[#081c32]">Teléfono</label>
-              <input
-                type="tel"
-                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#5a8cc4] focus:ring-[#5a8cc4]"
-                placeholder="+51 999 999 999"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-semibold text-[#081c32]">Servicio de interés</label>
+              <label className="block text-xs font-bold tracking-wide text-[#0B1E35] uppercase mb-2">Servicio de interés</label>
               <select
-                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 bg-white focus:border-[#5a8cc4] focus:ring-[#5a8cc4]"
+                defaultValue=""
+                className="w-full border border-[#D1D9E0] px-4 py-3 text-sm focus:border-[#C5A028] focus:ring-1 focus:ring-[#C5A028] outline-none transition-colors bg-white appearance-none"
               >
+                <option value="" disabled>Seleccione un servicio</option>
                 <option>Obras Civiles</option>
                 <option>Topografía y Levantamientos</option>
                 <option>Tasaciones y Valorizaciones</option>
@@ -66,22 +75,25 @@ export default function Contacto() {
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-[#081c32]">Mensaje</label>
+              <label className="block text-xs font-bold tracking-wide text-[#0B1E35] uppercase mb-2">Mensaje detallado</label>
               <textarea
                 rows={5}
-                className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 resize-none focus:border-[#5a8cc4] focus:ring-[#5a8cc4]"
-                placeholder="Describe brevemente tu requerimiento"
+                className="w-full border border-[#D1D9E0] px-4 py-3 text-sm resize-none focus:border-[#C5A028] focus:ring-1 focus:ring-[#C5A028] outline-none transition-colors bg-transparent"
+                placeholder="Describa brevemente su requerimiento o proyecto..."
               />
             </div>
 
             <button
               type="submit"
               className="
-                w-full mt-3 px-6 py-3 rounded-full font-semibold text-white
-                bg-[#5a8cc4] hover:bg-[#73a8e5] transition-all shadow-md
+                mt-2 w-full inline-flex items-center justify-center gap-2
+                px-6 py-4 bg-[#0B1E35] text-white
+                text-xs font-bold tracking-[0.1em] uppercase
+                hover:bg-[#1A3A5C] transition-colors duration-200
               "
             >
-              Enviar mensaje
+              Enviar Mensaje
+              <ArrowRight size={14} />
             </button>
           </form>
         </motion.div>
@@ -94,117 +106,94 @@ export default function Contacto() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="flex flex-col gap-6"
+          className="flex flex-col"
         >
-          <h2 className="text-3xl font-extrabold text-[#081c32]">
-            Información de contacto
-          </h2>
+          <div className="mb-10">
+            <span className="section-badge mb-4 inline-flex">Información de Contacto</span>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#0B1E35] mt-2 mb-4"
+              
+            >
+              Estamos aquí para<br />ayudarle
+            </h2>
+            <p className="text-[#6B7280] text-sm leading-relaxed">
+              Póngase en contacto con nuestros especialistas para discutir su próximo proyecto. Garantizamos una respuesta rápida y profesional.
+            </p>
+          </div>
 
-          {/* TARJETAS DE INFO */}
-          <div className="grid grid-cols-1 gap-5">
+          {/* TARJETAS DE INFO — Estilo lista corporativa */}
+          <div className="grid grid-cols-1 gap-0 border border-[#D1D9E0] bg-white">
 
             {/* Teléfono */}
-            <div className="flex items-start gap-4 bg-white shadow-md p-6 rounded-xl border border-gray-200">
-              <Phone className="w-8 h-8 text-[#5a8cc4]" />
+            <div className="flex items-start gap-5 p-6 border-b border-[#D1D9E0] group hover:bg-[#F4F6F8] transition-colors">
+              <div className="w-10 h-10 flex items-center justify-center bg-[#0B1E35] text-white flex-shrink-0">
+                <Phone size={16} />
+              </div>
               <div>
-                <h3 className="text-lg font-bold text-[#081c32]">Teléfono</h3>
-                <p className="text-gray-600">+51 999 656 111</p>
+                <h3 className="text-xs font-bold text-[#0B1E35] uppercase tracking-wide mb-1">Teléfono Directo</h3>
+                <p className="text-[#6B7280] text-sm">+51 999 656 111</p>
               </div>
             </div>
 
             {/* Correo */}
-            <div className="flex items-start gap-4 bg-white shadow-md p-6 rounded-xl border border-gray-200">
-              <Mail className="w-8 h-8 text-[#5a8cc4]" />
+            <div className="flex items-start gap-5 p-6 border-b border-[#D1D9E0] group hover:bg-[#F4F6F8] transition-colors">
+              <div className="w-10 h-10 flex items-center justify-center bg-[#0B1E35] text-white flex-shrink-0">
+                <Mail size={16} />
+              </div>
               <div>
-                <h3 className="text-lg font-bold text-[#081c32]">Correo electrónico</h3>
-                <p className="text-gray-600">consultorialazaro@gmail.com</p>
+                <h3 className="text-xs font-bold text-[#0B1E35] uppercase tracking-wide mb-1">Correo Electrónico</h3>
+                <p className="text-[#6B7280] text-sm">consultorialazaro@gmail.com</p>
               </div>
             </div>
 
             {/* Horario */}
-            <div className="flex items-start gap-4 bg-white shadow-md p-6 rounded-xl border border-gray-200">
-              <Clock className="w-8 h-8 text-[#5a8cc4]" />
+            <div className="flex items-start gap-5 p-6 border-b border-[#D1D9E0] group hover:bg-[#F4F6F8] transition-colors">
+              <div className="w-10 h-10 flex items-center justify-center bg-[#0B1E35] text-white flex-shrink-0">
+                <Clock size={16} />
+              </div>
               <div>
-                <h3 className="text-lg font-bold text-[#081c32]">Horario</h3>
-                <p className="text-gray-600">Lun – Sáb: 8:00 am – 6:00 pm</p>
+                <h3 className="text-xs font-bold text-[#0B1E35] uppercase tracking-wide mb-1">Horario de Atención</h3>
+                <p className="text-[#6B7280] text-sm">Lunes a Sábado: 8:00 am – 6:00 pm</p>
               </div>
             </div>
 
             {/* Ubicación */}
-            <div className="flex items-start gap-4 bg-white shadow-md p-6 rounded-xl border border-gray-200">
-              <MapPin className="w-8 h-8 text-[#5a8cc4]" />
+            <div className="flex items-start gap-5 p-6 group hover:bg-[#F4F6F8] transition-colors">
+              <div className="w-10 h-10 flex items-center justify-center bg-[#0B1E35] text-white flex-shrink-0">
+                <MapPin size={16} />
+              </div>
               <div>
-                <h3 className="text-lg font-bold text-[#081c32]">Ubicación</h3>
-                <p className="text-gray-600">Atención en Lima y Provincias</p>
+                <h3 className="text-xs font-bold text-[#0B1E35] uppercase tracking-wide mb-1">Ubicación</h3>
+                <p className="text-[#6B7280] text-sm">Atención en Lima y Provincias, Perú</p>
               </div>
             </div>
+
           </div>
 
           {/* REDES SOCIALES */}
-<div className="mt-6 flex items-center gap-4">
-
-  {/* WhatsApp */}
-  <a
-    href="https://wa.me/51999656111"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
-      w-12 h-12 flex items-center justify-center rounded-full
-      bg-[#5a8cc4] text-white shadow-md
-      hover:bg-[#73a8e5] transition-all
-    "
-  >
-    <MessageCircle className="w-6 h-6" />
-  </a>
-
-  {/* Facebook */}
-  <a
-    href="#"
-    target="_blank"
-    className="
-      w-12 h-12 flex items-center justify-center rounded-full
-      bg-[#5a8cc4] text-white shadow-md
-      hover:bg-[#73a8e5] transition-all
-    "
-  >
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M13 3h4v4h-4v3h4v4h-4v7h-4v-7H7v-4h2V7a4 4 0 0 1 4-4z" />
-    </svg>
-  </a>
-
-  {/* Instagram */}
-  <a
-    href="#"
-    target="_blank"
-    className="
-      w-12 h-12 flex items-center justify-center rounded-full
-      bg-[#5a8cc4] text-white shadow-md
-      hover:bg-[#73a8e5] transition-all
-    "
-  >
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2c2.7 0 3 .01 4.05.06 1.04.05 1.76.22 2.4.46a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.24.64.41 1.36.46 2.4.05 1.05.06 1.35.06 4.05s-.01 3-.06 4.05c-.05 1.04-.22 1.76-.46 2.4a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.24-1.36.41-2.4.46C15 21.99 14.7 22 12 22s-3-.01-4.05-.06c-1.04-.05-1.76-.22-2.4-.46a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.24-.64-.41-1.36-.46-2.4C2.01 15 2 14.7 2 12s.01-3 .06-4.05c.05-1.04.22-1.76.46-2.4a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.44 2.52c.64-.24 1.36-.41 2.4-.46C9 2.01 9.3 2 12 2zm0 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm6.5-.88a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24zM12 8.4A3.6 3.6 0 1 1 8.4 12 3.6 3.6 0 0 1 12 8.4z" />
-    </svg>
-  </a>
-
-  {/* Email */}
-  <a
-    href="mailto:consultorialazaro@gmail.com"
-    className="
-      w-12 h-12 flex items-center justify-center rounded-full
-      bg-[#5a8cc4] text-white shadow-md
-      hover:bg-[#73a8e5] transition-all
-    "
-  >
-    <Mail className="w-6 h-6" />
-  </a>
-
-</div>
+          <div className="mt-8 flex items-center gap-3">
+            <span className="text-xs font-bold tracking-wide text-[#0B1E35] uppercase mr-2">
+              Síguenos:
+            </span>
+            {["FB", "IG", "LI"].map((net) => (
+              <a
+                key={net}
+                href="#"
+                className="
+                  w-10 h-10 flex items-center justify-center
+                  border border-[#D1D9E0] text-[#6B7280]
+                  hover:border-[#C5A028] hover:text-[#C5A028]
+                  text-xs font-bold transition-colors bg-white
+                "
+              >
+                {net}
+              </a>
+            ))}
+          </div>
 
         </motion.div>
 
       </div>
     </section>
-    
   );
 }

@@ -1,105 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SearchCheck, FileText, Hammer, CheckCircle2 } from "lucide-react";
 
 const pasos = [
   {
-    icono: SearchCheck,
-    titulo: "1. Diagnóstico inicial",
+    numero: "01",
+    titulo: "Planificación",
     descripcion:
-      "Analizamos tus requerimientos y evaluamos las condiciones técnicas y legales del proyecto.",
+      "Análisis de viabilidad, levantamiento de datos técnicos primarios y estructuración del cronograma maestro de obra.",
   },
   {
-    icono: FileText,
-    titulo: "2. Planificación técnica",
+    numero: "02",
+    titulo: "Ejecución",
     descripcion:
-      "Elaboramos propuestas detalladas y cronogramas ajustados a tus objetivos y normativa vigente.",
+      "Despliegue de cuadrillas especializadas y control de calidad bajo normativas ISO y regulaciones locales vigentes.",
   },
   {
-    icono: Hammer,
-    titulo: "3. Ejecución y gestión",
+    numero: "03",
+    titulo: "Entrega",
     descripcion:
-      "Implementamos cada etapa del proyecto con precisión técnica, supervisión constante y transparencia.",
-  },
-  {
-    icono: CheckCircle2,
-    titulo: "4. Entrega y validación",
-    descripcion:
-      "Garantizamos resultados óptimos con informes finales y documentación técnica verificada.",
+      "Transferencia de activos, entrega de dossiers de calidad y soporte post-obra para garantizar la operatividad.",
   },
 ];
 
 export default function ProcesoServicios() {
   return (
-    <section className="w-full py-15 bg-[#c1d4eb] text-[#102b4a] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* ---------- Título ---------- */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <span className="bg-[#348caf]/10 text-[#1d4f91] font-semibold px-4 py-2 rounded-md">
-            Nuestro proceso de trabajo
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mt-4 mb-3">
-            Garantizamos resultados con un enfoque técnico y transparente
+    <section className="w-full py-24 bg-[#141A25]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* ENCABEZADO CENTRADO */}
+        <div className="text-center mb-20">
+          <h2 className="text-[#C5A028] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            Nuestra Metodología
           </h2>
-          <p className="text-[#475569] max-w-3xl mx-auto">
-            En Consultoría Lázaro seguimos un proceso estructurado que asegura
-            precisión, cumplimiento y calidad en cada proyecto.
+          <p className="text-white/80 max-w-2xl mx-auto text-sm leading-relaxed">
+            El rigor técnico define cada etapa de nuestra operación, desde el primer
+            trazo hasta la entrega final.
           </p>
-        </motion.div>
+        </div>
 
-        {/* ---------- Grid de pasos ---------- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14 sm:gap-10">
+        {/* GRID DE PASOS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 relative">
+          
+          {/* Línea conectora sutil (visible solo en desktop) */}
+          <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[1px] bg-white/10 z-0" />
 
-          {pasos.map((paso, index) => {
-            const Icono = paso.icono;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.3 },
-                }}
-                className="relative bg-white pt-16 pb-8 px-6 rounded-2xl border border-[#cbd5e1]
-                hover:border-[#348caf] hover:shadow-lg hover:shadow-[#348caf]/20
-                transition-all duration-300 text-center group"
-              >
-                {/* ICONO FLOTANTE */}
-                <motion.div
-                  className="absolute -top-10 left-1/2 transform -translate-x-1/2"
-                  whileHover={{
-                    y: -4,
-                    scale: 1.05,
-                    transition: { duration: 0.3 },
-                  }}
-                >
-                  <motion.div
-                    className="p-5 rounded-full shadow-xl ring-4 ring-white bg-[#348caf] group-hover:bg-[#1d4f91] transition-colors duration-300"
-                  >
-                    <Icono className="w-10 h-10 text-white" />
-                  </motion.div>
-                </motion.div>
+          {pasos.map((paso, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="relative z-10 flex flex-col"
+            >
+              {/* Caja del número */}
+              <div className="w-14 h-14 border border-[#C5A028] bg-[#141A25] flex items-center justify-center mb-6">
+                <span className="text-[#C5A028] font-mono text-sm tracking-widest">
+                  {paso.numero}
+                </span>
+              </div>
 
-                {/* CONTENIDO */}
-                <h3 className="text-lg font-semibold mb-2 mt-2">
-                  {paso.titulo}
-                </h3>
-                <p className="text-[#475569] text-sm leading-relaxed">
-                  {paso.descripcion}
-                </p>
-              </motion.div>
-            );
-          })}
+              {/* Título */}
+              <h3 className="text-[#C5A028] text-lg font-semibold mb-4">
+                {paso.titulo}
+              </h3>
+
+              {/* Descripción */}
+              <p className="text-white/70 text-base leading-relaxed">
+                {paso.descripcion}
+              </p>
+            </motion.div>
+          ))}
+
         </div>
       </div>
     </section>

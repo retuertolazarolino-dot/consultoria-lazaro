@@ -1,53 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function CTAWhatsApp() {
   return (
-    <section className="w-full py-12 bg-[#081c32] flex justify-center">
-      {/* Contenedor 85% */}
+    <section className="w-full py-24 bg-white flex justify-center">
       <motion.div
-        initial={{ opacity: 0, y: 25 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="
-          w-[85%] max-w-4xl 
-          bg-[#0e2744]/80 backdrop-blur-md
-          rounded-2xl shadow-xl 
-          text-center text-white
-          px-6 py-5
-        "
+        transition={{ duration: 0.7 }}
+        className="w-full max-w-7xl mx-auto px-6 lg:px-8"
       >
-        {/* Título */}
-        <h2 className="text-2xl md:text-4xl font-extrabold mb-3 leading-snug">
-          ¿Necesitas un profesional confiable para tu proyecto?
-        </h2>
+        <div className="bg-[#0B1E35] py-20 px-6 md:px-16 text-center shadow-lg">
+          
+          <h2 className="text-white text-3xl md:text-4xl font-bold mb-6">
+            ¿Listo para comenzar su próximo desafío técnico?
+          </h2>
+          
+          <p className="text-white/80 text-base md:text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+            Nuestro equipo está preparado para brindarle la precisión e innovación
+            que su proyecto requiere.
+          </p>
 
-        {/* Texto breve */}
-        <p className="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
-          Estoy listo para ayudarte con soluciones técnicas y legales en 
-          ingeniería civil, topografía y saneamiento. Hablemos sin compromiso.
-        </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="https://wa.me/51999656111"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                px-8 py-3 bg-[#013D29] text-white
+                text-sm font-semibold
+                hover:bg-[#01281A] transition-colors duration-300
+                w-full sm:w-auto
+              "
+            >
+              Hablar con un Experto
+            </a>
 
-        {/* Botón WhatsApp */}
-        <a
-          href="https://wa.me/51999656111"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex items-center justify-center gap-2
-            bg-[#5a8cc4] hover:bg-[#73a8e5]
-            text-white font-semibold
-            px-7 py-3 rounded-full
-            shadow-md transition-all duration-300
-            hover:scale-105
-          "
-        >
-          <MessageCircle className="w-5 h-5" />
-          Escríbeme por WhatsApp
-        </a>
+            <Link
+              href="/proyectos"
+              className="
+                px-8 py-3 border border-white text-white
+                text-sm font-semibold
+                hover:bg-white hover:text-[#0B1E35] transition-colors duration-300
+                w-full sm:w-auto
+              "
+            >
+              Ver Proyectos
+            </Link>
+          </div>
+          
+        </div>
       </motion.div>
     </section>
   );

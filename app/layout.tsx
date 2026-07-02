@@ -2,32 +2,33 @@
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import { poppins } from "@/app/fonts";
+import { inter } from "@/app/fonts";
 
 export const metadata = {
-  metadataBase: new URL("https://consultorialazaro.vercel.app"), // cuando tengas dominio
+  metadataBase: new URL("https://consultorialazaro.com"),
   title: {
-    default: "Consultoría Lázaro",
+    default: "Consultoría Lázaro | Ingeniería, Topografía y Saneamiento Legal",
     template: "%s | Consultoría Lázaro"
   },
-  description: "Servicios profesionales de consultoría, obras civiles, tasaciones, topografía y saneamiento legal.",
+  description: "Consultoría Lázaro ofrece servicios profesionales de ingeniería civil, topografía de precisión, tasaciones, y saneamiento físico legal en Perú.",
   keywords: [
     "consultoría",
     "tasaciones",
     "topografía",
     "obras civiles",
     "saneamiento físico legal",
-    "perú",
-    "ingeniería",
-    "trámites registrales"
+    "ingeniería civil peru",
+    "habilitaciones urbanas",
+    "trámites registrales sunarp",
+    "gerencia de proyectos pmi"
   ],
   openGraph: {
     type: "website",
     locale: "es_PE",
-    url: "https://consultorialazaro.vercel.app",
+    url: "https://consultorialazaro.com",
     siteName: "Consultoría Lázaro",
-    title: "Consultoría Lázaro",
-    description: "Servicios profesionales en ingeniería, consultoría legal y obras civiles.",
+    title: "Consultoría Lázaro | Expertos en Ingeniería Civil",
+    description: "Servicios profesionales en ingeniería civil, topografía, tasaciones y saneamiento legal. Calidad y garantía para tus proyectos.",
   },
   icons: {
     icon: "/favicon.ico"
@@ -37,8 +38,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <body className={`${poppins.className} antialiased font-sans bg-white text-black`}>
+    <html lang="es" className={`${inter.variable}`}>
+      <body className={`${inter.className} antialiased bg-white text-[#0B1E35]`}>
         
         <Header />
 

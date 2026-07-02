@@ -2,37 +2,42 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const servicios = [
   {
-    tipo: "especial",
-    titulo: "Servicios Destacados",
-    descripcion:
-      "Explore nuestras principales áreas de servicio en ingeniería civil, topografía y saneamiento legal.",
-    url: "/servicios",
-  },
-
-  {
-    tipo: "imagen",
+    ref: "REF: OBR-01",
     titulo: "Obras Civiles",
     descripcion:
-      "Ejecución y supervisión de obras con estándares técnicos y de calidad.",
+      "Ejecución, supervisión y gerencia de proyectos de construcción con estrictos estándares de calidad y normativas vigentes.",
+    caracteristicas: ["Gestión integral de proyectos", "Supervisión técnica de obras"],
     imagen: "/home/servicio1.jpg",
     url: "/servicios/obras-civiles",
   },
   {
-    tipo: "imagen",
-    titulo: "Topografía",
+    ref: "REF: TOPO-02",
+    titulo: "Topografía y Levantamientos",
     descripcion:
-      "Levantamientos precisos, parcelaciones, planos y mediciones especializadas.",
+      "Levantamientos topográficos de alta precisión para parcelaciones, lotizaciones y diseño geométrico de vías.",
+    caracteristicas: ["Levantamientos altimétricos", "Planos perimétricos georreferenciados"],
     imagen: "/home/servicio3.png",
     url: "/servicios/levantamientos-topograficos",
   },
   {
-    tipo: "imagen",
-    titulo: "Saneamiento Legal",
+    ref: "REF: VAL-03",
+    titulo: "Tasaciones y Valorizaciones",
     descripcion:
-      "Declaratoria de fábrica, habilitaciones urbanas y trámites legales.",
+      "Determinación técnica del valor económico real de bienes inmuebles, terrenos y maquinarias con fines comerciales y financieros.",
+    caracteristicas: ["Tasaciones comerciales", "Valorizaciones de maquinaria"],
+    imagen: "/home/servicio1.jpg", // Replace with correct image if available
+    url: "/servicios/tasaciones-valorizaciones",
+  },
+  {
+    ref: "REF: SAN-04",
+    titulo: "Saneamiento Legal y Predial",
+    descripcion:
+      "Regularización técnica y jurídica de propiedades urbanas y rurales para garantizar la seguridad de su inversión inmobiliaria.",
+    caracteristicas: ["Declaratoria de fábrica", "Habilitaciones urbanas"],
     imagen: "/home/servicio2.png",
     url: "/servicios/saneamiento-legal",
   },
@@ -40,119 +45,88 @@ const servicios = [
 
 export default function ServiciosDestacados() {
   return (
-    <section className="w-full py-24 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="w-full py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* ---------------- TÍTULO GENERAL ---------------- */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#081c32] mb-3">
+        {/* TÍTULO DE LA SECCIÓN */}
+        <div className="mb-16">
+          <h2 className="text-xl md:text-2xl text-[#0B1E35] font-light">
             Servicios Destacados
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Descubra nuestras áreas principales de trabajo y cómo podemos ayudarle
-            a ejecutar su proyecto de manera profesional.
-          </p>
+          <div className="w-16 h-[3px] bg-[#0B1E35] mt-2" />
         </div>
 
-        {/* ---------------- GRID DE 4 CARDS ---------------- */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-
+        {/* LISTA DE SERVICIOS */}
+        <div className="flex flex-col gap-16">
           {servicios.map((serv, index) => {
+            const isEven = index % 2 === 0;
 
-            /* ---------- CARD ESPECIAL SIN IMAGEN ---------- */
-            if (serv.tipo === "especial") {
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="
-                    bg-[#081c32] text-white p-7 rounded-xl shadow-xl
-                    flex flex-col justify-center items-center text-center 
-                    h-96
-                  "
-                >
-                  <h3 className="text-2xl font-bold mb-4">{serv.titulo}</h3>
-
-                  <p className="text-sm text-gray-200 mb-8 px-3">
-                    {serv.descripcion}
-                  </p>
-
-                  <Link
-                    href={serv.url}
-                    className="
-                      px-6 py-2 bg-[#5a8cc4] rounded-full font-semibold
-                      hover:bg-[#73a8e5] transition-all
-                    "
-                  >
-                    Ver servicio
-                  </Link>
-                </motion.div>
-              );
-            }
-
-            /* ---------- CARDS CON IMAGEN Y GLASS ---------- */
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative rounded-xl overflow-hidden shadow-xl group h-96"
+                transition={{ duration: 0.6 }}
+                className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-8 md:gap-16 items-center`}
               >
-                {/* IMAGEN */}
-                <img
-                  src={serv.imagen}
-                  alt={serv.titulo}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {/* BLOQUE DE IMAGEN */}
+                <div className="w-full md:w-1/2">
+                  <div className="p-2 border border-[#E5E7EB] rounded-sm bg-white shadow-sm relative">
+                    {/* Etiqueta REF */}
+                    <div className="absolute top-6 right-6 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 border border-[#E5E7EB] shadow-sm">
+                      <span className="text-xs font-bold text-[#0B1E35] tracking-widest uppercase">
+                        {serv.ref}
+                      </span>
+                    </div>
 
-                {/* TITULO GLASS (SIN HOVER) */}
-                <div
-                  className="
-                    absolute bottom-4 left-4 px-4 py-2 rounded-lg
-                    bg-white/20 backdrop-blur-md shadow-md 
-                    text-white font-bold text-lg transition-all
-                    group-hover:opacity-0
-                  "
-                >
-                  {serv.titulo}
+                    <div className="relative overflow-hidden bg-gray-100 aspect-video">
+                      <img
+                        src={serv.imagen}
+                        alt={serv.titulo}
+                        className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                {/* OVERLAY HOVER */}
-                <div
-                  className="
-                    absolute inset-0 bg-[#081c32]/80 opacity-0 
-                    group-hover:opacity-100 transition-all duration-300
-                    flex flex-col justify-center items-center text-center px-6
-                  "
-                >
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                {/* BLOQUE DE TEXTO */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center">
+                  <h3 className="text-xl text-[#0B1E35] font-medium mb-4">
                     {serv.titulo}
                   </h3>
-
-                  <p className="text-gray-200 text-sm mb-6">
+                  
+                  <p className="text-[#4B5563] text-sm leading-relaxed mb-6">
                     {serv.descripcion}
                   </p>
+
+                  <ul className="space-y-2 mb-8">
+                    {serv.caracteristicas.map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm text-[#0B1E35]">
+                        <CheckCircle2 className="w-4 h-4 text-[#0B1E35]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <Link
                     href={serv.url}
                     className="
-                      px-6 py-2 bg-[#5a8cc4] text-white rounded-full font-semibold 
-                      hover:bg-[#73a8e5] transition-all
+                      inline-flex items-center gap-2
+                      text-[#0B1E35] text-sm font-medium
+                      hover:text-[#C5A028] transition-colors
+                      group w-fit
                     "
                   >
-                    Ver servicio
+                    Detalles del servicio
+                    <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </motion.div>
             );
           })}
-
         </div>
+
       </div>
     </section>
   );

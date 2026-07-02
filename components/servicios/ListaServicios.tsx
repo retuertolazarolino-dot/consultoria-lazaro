@@ -2,130 +2,136 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Compass, Hammer, FileText, Mountain, Map, SearchCheck, CheckCircle2 } from "lucide-react";
 
 const servicios = [
   {
-    titulo: "Obras Civiles",
+    icono: Compass,
+    titulo: "INGENIERÍA ESTRUCTURAL",
     descripcion:
-      "Ejecución y supervisión de obras con estándares técnicos y de calidad.",
-    imagen: "/servicios/servicio1.jpg",
+      "Diseño y análisis de sistemas estructurales optimizados para proyectos comerciales e industriales.",
+    lista: ["Cálculo de estructuras metálicas", "Memoria descriptiva técnica"],
     url: "/servicios/obras-civiles",
   },
   {
-    titulo: "Topografía y Levantamientos",
+    icono: Mountain,
+    titulo: "TOPOGRAFÍA DE PRECISIÓN",
     descripcion:
-      "Levantamientos precisos, parcelaciones, planos y mediciones especializadas.",
-    imagen: "/servicios/servicio1.jpg",
+      "Levantamientos geodésicos y fotogrametría aérea con tecnología LIDAR y estaciones totales.",
+    lista: ["Modelado 3D de terrenos", "Planos de georreferenciación"],
     url: "/servicios/levantamientos-topograficos",
   },
   {
-    titulo: "Tasaciones y Valorizaciones",
+    icono: Hammer,
+    titulo: "SANEAMIENTO LEGAL",
     descripcion:
-      "Determinación técnica del valor real de bienes inmuebles, terrenos y edificaciones.",
-    imagen: "/servicios/servicio1.jpg",
-    url: "/servicios/tasaciones-valorizaciones",
-  },
-  {
-    titulo: "Saneamiento Legal",
-    descripcion:
-      "Declaratoria de fábrica, habilitaciones urbanas y regularización de propiedades.",
-    imagen: "/servicios/servicio1.jpg",
+      "Regularización técnica y legal de predios industriales y urbanos para garantizar la propiedad.",
+    lista: ["Diagnóstico de antecedentes", "Inscripción en registros"],
     url: "/servicios/saneamiento-legal",
   },
   {
-    titulo: "Habilitaciones Urbanas",
+    icono: FileText,
+    titulo: "GERENCIA DE PROYECTOS",
     descripcion:
-      "Tramitación y ejecución de habilitaciones urbanas para el desarrollo de proyectos.",
-    imagen: "/servicios/servicio1.jpg",
-    url: "/servicios/habilitaciones-urbanas",
+      "Gestión integral bajo estándares PMI para el control de tiempos, costos y calidad en obra.",
+    lista: ["Cronogramas maestros (Gantt)", "Informes de gestión de costos"],
+    url: "/servicios/gerencia",
   },
   {
-    titulo: "Planos Perimétricos",
+    icono: Map,
+    titulo: "GEOTECNIA",
     descripcion:
-      "Elaboración de planos detallados y georreferenciados para proyectos civiles y legales.",
-    imagen: "/servicios/servicio1.jpg",
-    url: "/servicios/planos-perimetricos",
+      "Estudios de suelos y mecánica de rocas para determinar la viabilidad de cimentaciones.",
+    lista: ["Perfiles estratigráficos", "Capacidad portante del suelo"],
+    url: "/servicios/geotecnia",
+  },
+  {
+    icono: SearchCheck,
+    titulo: "SUPERVISIÓN DE OBRA",
+    descripcion:
+      "Control exhaustivo en campo para asegurar el cumplimiento fiel de los expedientes técnicos.",
+    lista: ["Dossier de calidad final", "Certificados de conformidad"],
+    url: "/servicios/supervision",
   },
 ];
 
 export default function ListaServicios() {
   return (
-    <section className="w-full py-15 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* ---------------- TÍTULO GENERAL ---------------- */}
-        <div className="text-center mb-14">
-          <span className="bg-[#5a8cc4]/20 text-[#081c32] font-semibold px-4 py-2 rounded-md mb-4 inline-block">
-            Nuestros servicios
-          </span>
+    <section className="w-full py-24 relative bg-white">
+      {/* Patrón de puntos de fondo */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        style={{
+          backgroundImage: "radial-gradient(#0B1E35 1.5px, transparent 1.5px)",
+          backgroundSize: "24px 24px"
+        }}
+      />
 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#081c32] mb-3">
-            Encuentra el servicio ideal para tu proyecto
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        {/* ENCABEZADO */}
+        <div className="mb-14">
+          <h2 className="text-xl md:text-2xl font-bold tracking-widest text-[#0B1E35] uppercase">
+            Soluciones de Ingeniería
           </h2>
-
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            En <span className="font-semibold text-[#348caf]">Consultoría Lázaro</span> brindamos soluciones técnicas y legales que garantizan la correcta ejecución de tu obra, con precisión, cumplimiento y calidad profesional.
-          </p>
+          <div className="w-16 h-[3px] bg-[#C5A028] mt-3" />
         </div>
 
-        {/* ---------------- GRID DE SERVICIOS ---------------- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicios.map((serv, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative rounded-xl overflow-hidden shadow-xl group h-[380px]"
-            >
-              {/* IMAGEN */}
-              <img
-                src={serv.imagen}
-                alt={serv.titulo}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-
-              {/* TÍTULO GLASS (visible sin hover) */}
-              <div
-                className="
-                  absolute bottom-4 left-4 px-4 py-2 rounded-lg
-                  bg-[#081c32]/70 backdrop-blur-md shadow-md 
-                  text-white font-bold text-lg transition-all
-                  group-hover:opacity-0
-                "
+        {/* GRID DE SERVICIOS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicios.map((serv, index) => {
+            const Icono = serv.icono;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white border border-[#E5E7EB] p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                {serv.titulo}
-              </div>
+                {/* Ícono superior */}
+                <div className="mb-6">
+                  <Icono strokeWidth={1.5} className="w-7 h-7 text-[#0B1E35]" />
+                </div>
 
-              {/* OVERLAY SLIDE-UP */}
-              <div
-                className="
-                  absolute inset-0 bg-[#081c32]/95 flex flex-col justify-center items-center text-center px-6
-                  transform translate-y-full group-hover:translate-y-0
-                  opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out
-                "
-              >
-                <h3 className="text-2xl font-bold text-white mb-3">
+                {/* Título */}
+                <h3 className="text-[#8793A1] text-xs md:text-sm font-bold tracking-widest uppercase mb-4">
                   {serv.titulo}
                 </h3>
 
-                <p className="text-gray-200 text-sm mb-6">
+                {/* Descripción */}
+                <p className="text-[#4B5563] text-base leading-relaxed mb-6 flex-grow">
                   {serv.descripcion}
                 </p>
 
+                {/* Lista */}
+                <ul className="space-y-3 mb-8">
+                  {serv.lista.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle2 strokeWidth={1.5} className="w-5 h-5 text-[#0B1E35] mt-[2px] flex-shrink-0" />
+                      <span className="text-sm md:text-base text-[#6B7280]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Botón */}
                 <Link
                   href={serv.url}
                   className="
-                    px-6 py-2 bg-[#5a8cc4] text-white rounded-full font-semibold 
-                    hover:bg-[#73a8e5] transition-all
+                    w-full py-4 text-center border border-[#D1D9E0]
+                    text-[#0B1E35] text-xs md:text-sm font-bold tracking-widest uppercase
+                    hover:border-[#0B1E35] hover:bg-[#0B1E35] hover:text-white
+                    transition-all duration-300
                   "
                 >
-                  Ver servicio
+                  Saber Más
                 </Link>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

@@ -2,14 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-// Importamos el ícono de cierre, FaTimes es un alias de FaXmark en versiones más recientes.
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok, FaTimes } from "react-icons/fa"; 
+import { X, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
+import { serviciosData } from "@/lib/data/servicios";
+import { useState } from "react";
 
 export default function HeaderMobile({ close }: { close: () => void }) {
+  const [servicesOpen, setServicesOpen] = useState(false);
+
   const navItems = [
     { name: "Inicio", href: "/" },
-    { name: "Servicios", href: "/servicios" },
-    { name: "Quiénes somos", href: "/quienes-somos" },
+    { name: "Quiénes Somos", href: "/quienes-somos" },
     { name: "Contacto", href: "/contacto" },
   ];
 
@@ -18,59 +20,126 @@ export default function HeaderMobile({ close }: { close: () => void }) {
       {/* Overlay */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.45 }}
+        animate={{ opacity: 0.6 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
         className="fixed inset-0 bg-black z-40"
         onClick={close}
       />
 
-      {/* Sidebar con animación de entrada (desde la izquierda) */}
+      {/* Sidebar */}
       <motion.div
-        initial={{ opacity: 0, x: "-100%" }} // Cambiado a -100% para una entrada más limpia
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: "-100%" }} // Cambiado a -100% para una salida más limpia
-        transition={{ duration: 0.3, ease: "easeOut" }} // Ajustado ligeramente la duración
-        className="fixed top-0 left-0 w-64 h-full bg-[#081c32] text-white p-6 z-50 shadow-xl flex flex-col"
+        initial={{ x: "-100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "-100%" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="fixed top-0 left-0 w-80 h-full bg-[#0B1E35] text-white z-50 shadow-2xl flex flex-col overflow-y-auto"
       >
-        
-      
-        <button
-          onClick={close}
-          className="absolute top-4 right-4 text-white text-3xl p-1 hover:text-[#5a8cc4] transition-colors"
-          aria-label="Cerrar menú de navegación"
-        >
-          <FaTimes /> 
-        </button>
+        {/* Cabecera del sidebar */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 shrink-0">
+          <Link href="/" onClick={close} className="flex flex-col leading-tight">
+            <span className="text-white font-bold text-sm tracking-widest uppercase">
+              Consultoría <span className="text-[#C5A028]">Lázaro</span>
+            </span>
+            <span className="text-white/35 text-[9px] tracking-[0.3em] uppercase mt-0.5">
+              Excelencia en Ingeniería
+            </span>
+          </Link>
 
-        {/* LOGO (manteniendo la estructura) */}
-        <div className="mt-10 mb-10 flex flex-col items-center">
-          <div className="w-14 h-14 bg-[#5a8cc4] rounded-md"></div>
+          <button
+            onClick={close}
+            className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+            aria-label="Cerrar menú"
+          >
+            <X size={18} />
+          </button>
         </div>
 
-        {/* Opciones del menú */}
-        <ul className="flex flex-col gap-6 text-lg">
+        {/* Navegación */}
+        <nav className="flex flex-col flex-1 px-6 py-4">
           {navItems.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                onClick={close} // Cierra el menú al navegar
-                className="hover:text-[#5a8cc4] transition-colors block" 
-              >
-                {item.name}
-              </Link>
-            </li>
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={close}
+              className="flex items-center justify-between py-4 text-white/70 hover:text-white border-b border-white/[0.07] text-sm font-semibold tracking-widest uppercase transition-colors group"
+            >
+              <span>{item.name}</span>
+              <span className="text-[#C5A028] text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
           ))}
-        </ul>
 
-        {/* Redes sociales */}
-        <div className="mt-auto pt-10 border-t border-gray-700/50"> {/* Separador sutil */}
-          <div className="flex justify-center gap-6 text-2xl">
-            <a href="#" aria-label="Facebook" className="hover:text-[#5a8cc4] transition-colors"><FaFacebookF /></a>
-            <a href="#" aria-label="Instagra" className="hover:text-[#5a8cc4] transition-colors"><FaInstagram /></a>
-            <a href="#" aria-label="WhatsApp" className="hover:text-[#5a8cc4] transition-colors"><FaWhatsapp /></a>
-            <a href="#" aria-label="TikTok" className="hover:text-[#5a8cc4] transition-colors"><FaTiktok /></a>
+          {/* Servicios — Desplegable */}
+          <div className="border-b border-white/[0.07]">
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="w-full flex items-center justify-between py-4 text-white/70 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
+            >
+              <span>Servicios</span>
+              {servicesOpen ? (
+                <ChevronUp size={15} className="text-[#C5A028]" />
+              ) : (
+                <ChevronDown size={15} className="text-[#C5A028]" />
+              )}
+            </button>
+
+            {servicesOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="pb-3 pl-3 flex flex-col gap-1"
+              >
+                <Link
+                  href="/servicios"
+                  onClick={close}
+                  className="py-2 text-[10px] font-bold tracking-widest uppercase text-[#C5A028] hover:text-[#E8C84A] transition-colors"
+                >
+                  → Ver todos los servicios
+                </Link>
+                {serviciosData.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/servicios/${s.slug}`}
+                    onClick={close}
+                    className="flex items-center gap-2 py-2 text-sm text-white/50 hover:text-white transition-colors"
+                  >
+                    <span className="w-1 h-1 bg-[#C5A028] rounded-full flex-shrink-0" />
+                    {s.titulo}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
           </div>
+        </nav>
+
+        {/* Contacto + CTA */}
+        <div className="px-6 py-6 border-t border-white/10 bg-[#071529] shrink-0">
+          <p className="text-[#C5A028] text-[10px] font-bold tracking-[0.25em] uppercase mb-4">
+            Contacto
+          </p>
+          <a
+            href="tel:+51999656111"
+            className="flex items-center gap-3 text-white/70 hover:text-white text-sm mb-3 transition-colors"
+          >
+            <Phone size={14} className="text-[#C5A028]" />
+            +51 999 656 111
+          </a>
+          <a
+            href="mailto:consultorialazaro@gmail.com"
+            className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors"
+          >
+            <Mail size={14} className="text-[#C5A028]" />
+            consultorialazaro@gmail.com
+          </a>
+
+          <Link
+            href="/contacto"
+            onClick={close}
+            className="mt-5 w-full flex items-center justify-center py-3 bg-[#C5A028] text-[#0B1E35] text-xs font-bold tracking-widest uppercase hover:bg-[#E8C84A] transition-colors"
+          >
+            Solicitar Consulta
+          </Link>
         </div>
       </motion.div>
     </>
