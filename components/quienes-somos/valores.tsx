@@ -15,7 +15,7 @@ export default function Valores() {
           <div className="absolute inset-0 border border-[#D1D9E0] bg-white p-3 shadow-sm z-10">
             <div className="relative w-full h-full overflow-hidden">
               <img
-                src="https://i.pinimg.com/736x/ff/ff/c6/ffffc638e1175786e406a084fd3e271a.jpg"
+                src="https://images.unsplash.com/photo-1504307651254-35680f35aa27?q=80&w=2070&auto=format&fit=crop"
                 alt="Profesional de Ingeniería"
                 className="w-full h-full object-cover filter brightness-[0.65]"
               />

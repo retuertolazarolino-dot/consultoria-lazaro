@@ -49,7 +49,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://www.gvalentinus.com/assets/images/edificaciones-construccion-grupo-valentinus.jpg')",
+            "url('/images/hero_ingenieria.png')",
         }}
       />
 

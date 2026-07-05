@@ -11,7 +11,7 @@ export default function HeroSobreMi() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://www.mivivienda.com.pe/PortalCMS/archivos/documentos/LOGO%20VALE-6703.JPEG')",
+            "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')",
         }}
       />
 

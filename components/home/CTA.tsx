@@ -11,7 +11,7 @@ export default function CTAFinal() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://blog.ucsp.edu.pe/hubfs/Qu%C3%A9%20es%20la%20ingenier%C3%ADa%20civil.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop')",
         }}
       />
 

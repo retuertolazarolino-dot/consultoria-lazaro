@@ -54,7 +54,7 @@ export default function QuienesSomos() {
           <div className="absolute inset-0 border border-[#D1D9E0] p-3 bg-white z-10">
             <div className="relative w-full h-full overflow-hidden">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfQA3j1sJuNDpHQxa5s80ME9Rc66Etu234Pg&s"
+                src="/images/equipo_consultoria.png"
                 alt="Consultoría Lázaro Equipo"
                 className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
               />

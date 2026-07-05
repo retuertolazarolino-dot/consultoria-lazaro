@@ -11,7 +11,7 @@ export default function HeroContacto() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://www.cecargi.com/wp-content/uploads/2024/06/contacto.jpg')",
+            "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')",
         }}
       />
 

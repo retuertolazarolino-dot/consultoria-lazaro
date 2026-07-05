@@ -11,7 +11,7 @@ const servicios = [
     descripcion:
       "Ejecución, supervisión y gerencia de proyectos de construcción con estrictos estándares de calidad y normativas vigentes.",
     caracteristicas: ["Gestión integral de proyectos", "Supervisión técnica de obras"],
-    imagen: "/home/servicio1.jpg",
+    imagen: "/images/servicio_obras_civiles.png",
     url: "/servicios/obras-civiles",
   },
   {
@@ -20,7 +20,7 @@ const servicios = [
     descripcion:
       "Levantamientos topográficos de alta precisión para parcelaciones, lotizaciones y diseño geométrico de vías.",
     caracteristicas: ["Levantamientos altimétricos", "Planos perimétricos georreferenciados"],
-    imagen: "/home/servicio3.png",
+    imagen: "/images/servicio_topografia.png",
     url: "/servicios/levantamientos-topograficos",
   },
   {
@@ -29,7 +29,7 @@ const servicios = [
     descripcion:
       "Determinación técnica del valor económico real de bienes inmuebles, terrenos y maquinarias con fines comerciales y financieros.",
     caracteristicas: ["Tasaciones comerciales", "Valorizaciones de maquinaria"],
-    imagen: "/home/servicio1.jpg", // Replace with correct image if available
+    imagen: "/images/servicio_tasaciones.png", // Replace with correct image if available
     url: "/servicios/tasaciones-valorizaciones",
   },
   {
@@ -38,7 +38,7 @@ const servicios = [
     descripcion:
       "Regularización técnica y jurídica de propiedades urbanas y rurales para garantizar la seguridad de su inversión inmobiliaria.",
     caracteristicas: ["Declaratoria de fábrica", "Habilitaciones urbanas"],
-    imagen: "/home/servicio2.png",
+    imagen: "/images/servicio_saneamiento.png",
     url: "/servicios/saneamiento-legal",
   },
 ];

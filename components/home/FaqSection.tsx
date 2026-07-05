@@ -67,7 +67,7 @@ export default function FaqSection() {
           {/* Imagen */}
           <div className="relative overflow-hidden group">
             <img
-              src="/home/servicio3.png"
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
               alt="Consultoría Lázaro - Atención al cliente"
               className="
                 w-full h-72 object-cover
