@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Target, Eye, Star, ArrowRight } from "lucide-react";
 
 export default function Valores() {
@@ -14,10 +15,12 @@ export default function Valores() {
           {/* Contenedor principal de imagen grande */}
           <div className="absolute inset-0 border border-[#D1D9E0] bg-white p-3 shadow-sm z-10">
             <div className="relative w-full h-full overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1504307651254-35680f35aa27?q=80&w=2070&auto=format&fit=crop"
                 alt="Profesional de Ingeniería"
-                className="w-full h-full object-cover filter brightness-[0.65]"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover filter brightness-[0.65]"
               />
               
               {/* Bloque de texto sobre la imagen */}

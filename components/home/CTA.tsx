@@ -2,18 +2,22 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { MessageCircle, Mail, ArrowRight } from "lucide-react";
 
 export default function CTAFinal() {
   return (
     <section className="relative w-full py-28 overflow-hidden">
       {/* Imagen de fondo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop')",
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+          alt="CTA background"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#0B1E35]/88" />

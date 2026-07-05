@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ServiceHeroProps {
   titulo: string;
@@ -13,12 +14,16 @@ export default function ServiceHero({ titulo, subtitulo, imagen }: ServiceHeroPr
   return (
     <section className="relative w-full h-[60vh] min-h-[500px] pt-20 flex items-center overflow-hidden">
       {/* Imagen de fondo dinámica */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${imagen}')`,
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={imagen}
+          alt={titulo}
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
 
       {/* Degradado lateral para dar legibilidad al texto */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E35]/95 via-[#0B1E35]/80 to-transparent" />

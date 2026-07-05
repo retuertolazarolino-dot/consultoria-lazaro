@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function QuienesSomos() {
   return (
@@ -53,10 +54,12 @@ export default function QuienesSomos() {
           {/* Contenedor principal de la imagen */}
           <div className="absolute inset-0 border border-[#D1D9E0] p-3 bg-white z-10">
             <div className="relative w-full h-full overflow-hidden">
-              <img
+              <Image
                 src="/images/equipo_consultoria.png"
                 alt="Consultoría Lázaro Equipo"
-                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E35]/40 to-transparent" />
             </div>

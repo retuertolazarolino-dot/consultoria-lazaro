@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const servicios = [
@@ -81,10 +82,12 @@ export default function ServiciosDestacados() {
                     </div>
 
                     <div className="relative overflow-hidden bg-gray-100 aspect-video">
-                      <img
+                      <Image
                         src={serv.imagen}
                         alt={serv.titulo}
-                        className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
                       />
                     </div>
                   </div>

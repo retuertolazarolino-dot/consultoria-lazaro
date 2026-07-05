@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Phone } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
@@ -45,13 +46,16 @@ export default function Hero() {
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
 
       {/* Fondo imagen */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/images/hero_ingenieria.png')",
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero_ingenieria.png"
+          alt="Ingeniería Civil"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
 
       {/* Overlay degradado — izquierda oscura, derecha más transparente */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E35]/95 via-[#0B1E35]/80 to-[#0B1E35]/50" />

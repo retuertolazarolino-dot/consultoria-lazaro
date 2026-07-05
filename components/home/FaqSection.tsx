@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
@@ -65,12 +66,14 @@ export default function FaqSection() {
           </p>
 
           {/* Imagen */}
-          <div className="relative overflow-hidden group">
-            <img
+          <div className="relative overflow-hidden group w-full h-72">
+            <Image
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
               alt="Consultoría Lázaro - Atención al cliente"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="
-                w-full h-72 object-cover
+                object-cover
                 filter grayscale group-hover:grayscale-0
                 transition-all duration-700 ease-in-out
               "
